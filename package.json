@@ -1,5 +1,5 @@
 {
-    "name": "mosql",
+    "name": "mosql-wrapper",
     "version": "1.0.0",
     "main": "build/index.js",
     "scripts": {

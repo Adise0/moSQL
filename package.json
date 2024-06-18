@@ -1,14 +1,14 @@
 {
     "name": "mosql",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "build/index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "tsc"
     },
     "keywords": [],
-    "author": "",
+    "author": "Adise",
     "license": "ISC",
-    "description": "",
+    "description": "An SQL wrapper inpired by mongoose",
     "dependencies": {
         "chalk": "^4.1.2",
         "debug": "^4.3.5",

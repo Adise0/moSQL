@@ -10,35 +10,26 @@ const debugInConsole = debug("laforja-comandes:database"); // Debug section setu
 export let connection: mysql.Connection;
 
 // This promise resolved when the DB connection starts correctly and rejects if there is an error
-const connectToDB = async (): Promise<mysql.Connection> => {
-  try {
-    debugInConsole(chalk.whiteBright("Connecting to database..."));
+const connectToDB = async (
+    config: mysql.ConnectionOptions
+): Promise<mysql.Connection> => {
+    try {
+        debugInConsole(chalk.whiteBright("Connecting to database..."));
 
-    connection = await mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
-      typeCast(field, next) {
-        if (field.type === "NEWDECIMAL") {
-          return parseFloat(field.string());
-        }
-        return next();
-      },
-    });
+        connection = await mysql.createConnection(config);
 
-    debugInConsole(
-      chalk.whiteBright("Connection to database "),
-      chalk.greenBright("SUCCESSFULL")
-    );
-    return connection;
-  } catch (error) {
-    debugInConsole(
-      chalk.whiteBright("Connection to database "),
-      chalk.redBright("FAILED")
-    );
-    throw error;
-  }
+        debugInConsole(
+            chalk.whiteBright("Connection to database "),
+            chalk.greenBright("SUCCESSFULL")
+        );
+        return connection;
+    } catch (error) {
+        debugInConsole(
+            chalk.whiteBright("Connection to database "),
+            chalk.redBright("FAILED")
+        );
+        throw error;
+    }
 };
 
 export default connectToDB;

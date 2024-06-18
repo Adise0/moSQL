@@ -6,7 +6,7 @@
         "noImplicitAny": true,
         "moduleResolution": "node",
         "sourceMap": true,
-        "types": ["./env.d.ts", "jest", "node"],
+        "types": ["node"],
         "outDir": "build",
         "baseUrl": ".",
         "paths": {
